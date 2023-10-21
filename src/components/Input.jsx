@@ -1,10 +1,10 @@
-export default function Input() {
+export default function Input({ label, id, type }) {
   return (
     <div className="field">
-      <label htmlFor="name" className="field__label">
-        Full Name
+      <label htmlFor={id} className="field__label">
+        {label}
       </label>
-      <input type="text" name="name" id="name" className="field__input" />
+      <input type={type} name={id} id={id} className="field__input" />
     </div>
   );
 }
