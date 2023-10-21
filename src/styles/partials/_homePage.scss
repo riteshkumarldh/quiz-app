@@ -1,0 +1,21 @@
+.homepage {
+  padding-block: 5rem;
+
+  &__container {
+    @include flex-center();
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__content {
+    max-width: 600px;
+    text-align: center;
+    margin-inline: auto;
+
+    h1 {
+      @include typography(4rem, 800, 1.2);
+      color: var(--accent);
+      opacity: 0.3;
+    }
+  }
+}

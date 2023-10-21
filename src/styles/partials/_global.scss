@@ -1,0 +1,107 @@
+// css rests
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --body-bg: #141625;
+  --second-bg: #1e2139;
+  --accent: #a445ed;
+  --accent-light: #2d153f;
+  --heading-color: #fff;
+  --text-color: #ffffffb2;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  @include typography();
+  background-color: var(--body-bg);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+}
+
+button,
+input {
+  background: none;
+  border: none;
+  font: inherit;
+  outline: none;
+}
+
+button:is(:focus, :focus-visible),
+input:is(:focus, :focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+span,
+img,
+a {
+  display: block;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+.appLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1600px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @include xxl() {
+    max-width: 1440px;
+  }
+
+  @include xl() {
+    max-width: 1240px;
+    padding-inline: 1.5rem;
+  }
+
+  @include lg() {
+    max-width: 990px;
+  }
+
+  @include md() {
+    max-width: 720px;
+    padding-inline: 1rem;
+  }
+
+  @include sm() {
+    max-width: 500px;
+  }
+}
