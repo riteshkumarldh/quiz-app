@@ -1,32 +1,39 @@
 import { useState } from "react";
 
-export default function SelectBox() {
+export default function SelectBox({ options, label, id }) {
   const [open, setOpen] = useState(false);
 
   const toggleSelect = () => {
     setOpen((prev) => !prev);
   };
 
+  const removeShowClass = () => {
+    setOpen(false);
+  };
+
   return (
     <div className="field">
-      <label htmlFor="type" className="field__label">
-        Select type
+      <label htmlFor={id} className="field__label">
+        {label}
       </label>
       <input
         onClick={toggleSelect}
+        onBlur={removeShowClass}
         readOnly
         type="text"
-        name="type"
-        id="type"
+        name={id}
+        id={id}
         className="field__input"
       />
 
       <ul className={`field__options ${open ? "show" : ""}`}>
-        <li className="field__options--single">First</li>
-        <li className="field__options--single">First</li>
-        <li className="field__options--single">First</li>
-        <li className="field__options--single">First</li>
-        <li className="field__options--single">First</li>
+        {options?.map((option) => {
+          return (
+            <li key={option.id} className="field__options--single">
+              {option.name}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

@@ -129,6 +129,12 @@ li {
     color: var(--text-color);
     padding-inline: 2rem;
     cursor: pointer;
+
+    &::placeholder {
+      color: var(--text-color);
+      opacity: 0.4;
+      font-size: 1.4rem;
+    }
   }
 
   &__options {
@@ -138,7 +144,27 @@ li {
     width: 100%;
     background-color: var(--second-bg);
     border-radius: 0.5rem;
+    max-height: 0;
     overflow: hidden;
+    transition: 500ms;
+    z-index: 100;
+
+    &.show {
+      max-height: 200px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+
+        &-thumb {
+          background-color: var(--accent);
+        }
+
+        &-track {
+          background-color: var(--accent-light);
+        }
+      }
+    }
 
     &--single {
       padding: 10px;
@@ -147,7 +173,7 @@ li {
       opacity: 0.75;
 
       &:hover {
-        background-color: var(--accent-light);
+        background-color: var(--body-bg);
       }
     }
   }
