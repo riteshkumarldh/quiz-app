@@ -14,7 +14,7 @@
 
     h1 {
       @include typography(4rem, 800, 1.2);
-      color: var(--accent);
+      color: var(--text-color);
       opacity: 0.3;
     }
   }
@@ -25,4 +25,7 @@
   width: 100%;
   margin-inline: auto;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
