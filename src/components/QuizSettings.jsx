@@ -40,7 +40,7 @@ export default function QuizSettings() {
         label="Select Difficult"
         id="difficulty"
       />
-      <Button>Submit</Button>
+      <Button>Start Quiz</Button>
     </div>
   );
 }

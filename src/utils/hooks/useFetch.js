@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = () => {
+export const useFetch = (url) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -9,7 +9,7 @@ export const useFetch = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch("https://opentdb.com/api_category.php");
+        const res = await fetch(url);
 
         if (!res.ok) {
           throw new Error("Response not received from the server");
@@ -27,7 +27,7 @@ export const useFetch = () => {
     };
 
     fetchData();
-  }, []);
+  }, [url]);
 
   return { isLoading, error, data };
 };

@@ -7,7 +7,7 @@ export default function Header() {
     <header className="header">
       <div className="header__container container">
         <Link to="/" className="header__logo">
-          🎖️Quizy🎖️
+          🎖️Quizfy🎖️
         </Link>
         <Navbar />
       </div>
