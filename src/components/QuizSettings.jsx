@@ -10,7 +10,9 @@ import {
 import { useFetch } from "../utils/hooks/useFetch";
 
 export default function QuizSettings() {
-  const { data } = useFetch("https://opentdb.com/api_category.php");
+  const { data: quizCategories } = useFetch(
+    "https://opentdb.com/api_category.php"
+  );
 
   return (
     <div className="quizsettings">
@@ -31,7 +33,7 @@ export default function QuizSettings() {
         id="typeQuestion"
       />
       <SelectBox
-        options={data?.trivia_categories}
+        options={quizCategories?.trivia_categories}
         label="Select Category"
         id="category"
       />

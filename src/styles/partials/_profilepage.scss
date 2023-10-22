@@ -1,0 +1,68 @@
+.profile {
+  padding-block: 50px;
+  &__container {
+    max-width: 600px;
+    margin-inline: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  &__name {
+    display: flex;
+    gap: 10px;
+
+    span {
+      color: var(--accent);
+    }
+  }
+}
+
+.history {
+  &__container {
+    max-width: 800px;
+    margin-inline: auto;
+    width: 100%;
+    padding-inline: 1.5rem;
+
+    & > h2 {
+      @include typography(2.6rem, 500, 1.5);
+      margin-bottom: 10px;
+    }
+  }
+
+  &__blank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    h3 {
+      opacity: 0.5;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    tr {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+
+      th,
+      td {
+        border: 1px solid;
+        vertical-align: middle;
+        text-align: center;
+      }
+
+      th {
+        padding-block: 1rem;
+      }
+
+      td {
+        padding-block: 0.5rem;
+        opacity: 0.75;
+      }
+    }
+  }
+}

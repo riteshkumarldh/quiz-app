@@ -14,13 +14,24 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
 
+.dark {
   --body-bg: #141625;
   --second-bg: #1e2139;
   --accent: #a445ed;
   --accent-light: #2d153f;
   --heading-color: #fff;
   --text-color: #ffffffb2;
+}
+
+.light {
+  --body-bg: #fff;
+  --second-bg: #f1f2f4;
+  --accent: #a445ed;
+  --accent-light: #2d153f;
+  --heading-color: #000;
+  --text-color: #000000b2;
 }
 
 html {
@@ -146,7 +157,7 @@ li {
     border-radius: 0.5rem;
     max-height: 0;
     overflow: hidden;
-    transition: 500ms;
+    transition: 300ms;
     z-index: 100;
 
     &.show {
