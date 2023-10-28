@@ -27,6 +27,16 @@ export default function QuizSettings() {
     alert("Something is wrong Not able to fetch the categores. please Retry");
   }
 
+  const handleQuiz = (e) => {
+    e.preventDefault();
+    if (fields.fullName.trim() === "") {
+      return alert("Please Fill your Name to proceed Further");
+    }
+
+    // we will dispatch a event to fetch the quiz data
+    // we will store the user name in the localstorage
+  };
+
   return (
     <form className="quizsettings">
       <Input
@@ -65,7 +75,9 @@ export default function QuizSettings() {
         fields={fields}
         setFields={setFields}
       />
-      <Button>Start Quiz</Button>
+      <Button type="submit" onClick={handleQuiz}>
+        Start Quiz
+      </Button>
     </form>
   );
 }
