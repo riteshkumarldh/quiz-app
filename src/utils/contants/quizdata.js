@@ -33,22 +33,27 @@ export const numberQuestions = [
 
 export const typeQuestions = [
   {
+    id: 0,
+    name: "Any Type",
+    value: "any",
+  },
+  {
     id: 1,
-    name: "Multiple Choice Question",
+    name: "Multiple Choice",
     value: "multiple",
   },
   {
     id: 2,
-    name: "Yes or No",
-    value: "yn",
+    name: "True / False",
+    value: "boolean",
   },
 ];
 
 export const questionDifficulty = [
   {
     id: 0,
-    name: "any",
-    value: "Any",
+    name: "Any Difficulty",
+    value: "any",
   },
   {
     id: 1,
@@ -62,7 +67,7 @@ export const questionDifficulty = [
   },
   {
     id: 3,
-    name: "Difficult",
-    value: "difficult",
+    name: "Hard",
+    value: "hard",
   },
 ];

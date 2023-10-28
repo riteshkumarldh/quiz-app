@@ -1,4 +1,12 @@
-export default function Input({ label, id, type, placeholder }) {
+export default function Input({
+  label,
+  id,
+  type,
+  placeholder,
+  setFields,
+  fields,
+}) {
+  console.log(fields);
   return (
     <div className="field">
       <label htmlFor={id} className="field__label">
@@ -10,6 +18,10 @@ export default function Input({ label, id, type, placeholder }) {
         name={id}
         id={id}
         className="field__input"
+        value={fields.fullName}
+        onChange={(e) =>
+          setFields((prev) => ({ ...prev, fullName: e.target.value }))
+        }
       />
     </div>
   );
