@@ -1,9 +1,22 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
+
+import { quizReducer, quizState } from "./reducer";
 
 export const QuizContext = createContext();
 
 const QuizProvider = ({ children }) => {
-  return <QuizContext.Provider value={{}}>{children}</QuizContext.Provider>;
+  const [{ fullName, quizQuestions }, dispatch] = useReducer(
+    quizReducer,
+    quizState
+  );
+
+  console.log(quizQuestions);
+
+  return (
+    <QuizContext.Provider value={{ fullName, dispatch }}>
+      {children}
+    </QuizContext.Provider>
+  );
 };
 
 export default QuizProvider;

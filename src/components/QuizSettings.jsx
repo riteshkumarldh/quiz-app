@@ -9,10 +9,13 @@ import {
   questionDifficulty,
 } from "../utils/contants/quizdata";
 import { useFetch } from "../utils/hooks/useFetch";
+import { useQuiz } from "../utils/hooks/useQuiz";
+import { actionTypes } from "../context/reducer";
 
 export default function QuizSettings() {
+  const { dispatch, fullName } = useQuiz();
   const [fields, setFields] = useState({
-    fullName: "",
+    fullName,
     numberQuestion: "10",
     typeQuestion: "any",
     category: "any",
@@ -27,14 +30,24 @@ export default function QuizSettings() {
     alert("Something is wrong Not able to fetch the categores. please Retry");
   }
 
-  const handleQuiz = (e) => {
+  const handleQuiz = async (e) => {
     e.preventDefault();
     if (fields.fullName.trim() === "") {
       return alert("Please Fill your Name to proceed Further");
     }
 
-    // we will dispatch a event to fetch the quiz data
-    // we will store the user name in the localstorage
+    try {
+      dispatch({ type: actionTypes.loading });
+      const res = await fetch("https://opentdb.com/api.php?amount=10");
+      const result = await res.json();
+      console.log(result);
+      dispatch({
+        type: actionTypes.fetchQuiz,
+        payload: { data: result.results, name: fields.fullName },
+      });
+    } catch (error) {
+      dispatch({ type: actionTypes.error, payload: error });
+    }
   };
 
   return (

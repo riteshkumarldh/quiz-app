@@ -6,7 +6,6 @@ export default function Input({
   setFields,
   fields,
 }) {
-  console.log(fields);
   return (
     <div className="field">
       <label htmlFor={id} className="field__label">

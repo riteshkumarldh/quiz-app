@@ -7,9 +7,11 @@ export default function SelectBox({ options, label, id, fields, setFields }) {
     setOpen((prev) => !prev);
   };
 
-  // const removeShowClass = () => {
-  //   setOpen(false);
-  // };
+  const removeShowClass = () => {
+    setTimeout(() => {
+      setOpen(false);
+    }, 200);
+  };
 
   const changeQuizSettings = (value) => {
     setFields((prev) => ({ ...prev, [id]: value }));
@@ -22,7 +24,7 @@ export default function SelectBox({ options, label, id, fields, setFields }) {
       </label>
       <input
         onClick={toggleSelect}
-        // onBlur={removeShowClass}
+        onBlur={removeShowClass}
         readOnly
         type="text"
         name={id}

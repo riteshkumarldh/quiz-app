@@ -1,6 +1,10 @@
 export const quizState = {
   quizQuestions: [],
-  fullName: "",
+  fullName: localStorage.getItem("userName")
+    ? localStorage.getItem("userName")
+    : "",
+  status: null,
+  error: null,
 };
 
 export const themeState = {
@@ -10,14 +14,32 @@ export const themeState = {
 export const actionTypes = {
   toggleTheme: "TOGGLE_THEME",
   fetchQuiz: "FETCH_QUIZ",
+  setQuizSettings: "SET_QUIZ_SETTINGS",
+  loading: "LOADING",
+  error: "ERROR",
 };
 
 export const quizReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.fetchQuiz:
+      localStorage.setItem("userName", action.payload.name);
       return {
         ...state,
-        quizQuestions: action.payload,
+        fullName: action.payload.name,
+        quizQuestions: action.payload.data,
+        status: null,
+        error: null,
+      };
+    case actionTypes.loading:
+      return {
+        ...state,
+        status: "loading",
+      };
+    case actionTypes.error:
+      return {
+        ...state,
+        error: action.payload,
+        status: null,
       };
   }
 };
@@ -25,8 +47,6 @@ export const quizReducer = (state, action) => {
 export const themeReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.toggleTheme:
-      localStorage.setItem("theme", state.theme === "dark" ? "light" : "dark");
-
       return {
         ...state,
         theme: state.theme === "dark" ? "light" : "dark",

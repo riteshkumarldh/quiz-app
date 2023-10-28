@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { themeReducer, themeState, actionTypes } from "./reducer";
 
 export const ThemeContext = createContext();
@@ -9,6 +9,11 @@ const ThemeProvider = ({ children }) => {
   const toggleTheme = () => {
     dispatch({ type: actionTypes.toggleTheme });
   };
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

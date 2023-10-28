@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useTheme } from "../utils/hooks/useTheme";
 
 export default function ThemeSwitcher() {
-  const [toggle, setToggle] = useState(true);
+  const { theme, toggleTheme: changeTheTheme } = useTheme();
 
   const toggleTheme = () => {
-    setToggle((prev) => !prev);
+    changeTheTheme();
   };
 
   return (
     <button
       onClick={toggleTheme}
-      className={`navbar__theme ${toggle ? "darkmode" : ""}`}
+      className={`navbar__theme ${theme === "dark" ? "darkmode" : ""}`}
     >
       <span className="navbar__theme--switcher"></span>
     </button>

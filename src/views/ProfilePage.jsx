@@ -2,22 +2,36 @@ import { useState } from "react";
 
 import Button from "../components/Button";
 import Input from "../components/Input";
+import { useQuiz } from "../utils/hooks/useQuiz";
 
 export default function ProfilePage() {
-  const [attempt, setAttempt] = useState(true);
+  const { fullName } = useQuiz();
+
+  const [attempt] = useState(true);
+
+  const [fields, setFields] = useState({
+    fullName,
+  });
+
   return (
     <main>
       <section className="profile">
         <div className="profile__container">
-          <h2 className="profile__name">
-            Hi, <span>Ritesh kumar</span>
-          </h2>
+          {fullName ? (
+            <h2 className="profile__name">
+              Hi, <span>{fullName}</span>
+            </h2>
+          ) : (
+            <h2>Save Your Name Below:</h2>
+          )}
 
           <Input
             type="text"
             id="fullName"
             placeholder="Enter Full Name"
             label="Full Name"
+            fields={fields}
+            setFields={setFields}
           />
           <Button>Save</Button>
         </div>

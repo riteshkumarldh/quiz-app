@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
+
 import "./styles/index.scss";
+
 import ThemeProvider from "./context/ThemeContext.jsx";
 import QuizProvider from "./context/QuizContext.jsx";
 
